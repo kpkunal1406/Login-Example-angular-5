@@ -1,0 +1,41 @@
+<div class="flex-spacer">
+    <section class="progress-bar">
+        <mat-progress-bar [color]="'primary'" [mode]="progressBarMode">
+        </mat-progress-bar>
+    </section>
+</div>
+
+<mat-card class="login-card">
+    <mat-card-header>
+        <div class="flex-spacer"></div>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="loginForm" #form="ngForm" (ngSubmit)="signIn(loginForm.value)">
+            <mat-input-container class="input-container">
+                <input matInput type="text" placeholder="UserName" formControlName="userName">
+                <mat-error *ngIf="!loginForm.hasError('required')">
+                    Please enter UserName
+                </mat-error>
+            </mat-input-container>
+
+            <mat-input-container class="input-container">
+                <input matInput type="password" placeholder="Password" formControlName="password">
+                <mat-error *ngIf="!loginForm.hasError('required')">
+                    Please enter Password
+                </mat-error>
+            </mat-input-container>
+
+            <br/>
+            <mat-error *ngIf="error">
+                {{error}}
+            </mat-error>
+            <br/>
+            <button mat-raised-button type="submit" [disabled]="!loginForm.valid">
+                Login
+            </button>
+
+
+        </form>
+    </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,44 @@
+<ng-container>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Add New User</mat-card-title>
+            <div class="flex-spacer"></div>
+        </mat-card-header>
+        <mat-card-content>
+              
+                <mat-grid-list cols="2" rowHeight="2:1">
+                  <mat-grid-tile>1</mat-grid-tile>
+                  <mat-grid-tile>2</mat-grid-tile>
+                  <mat-grid-tile>3</mat-grid-tile>
+                  <mat-grid-tile>4</mat-grid-tile>
+                </mat-grid-list>
+            <!-- <form [formGroup]="addUserForm" #form="ngForm" (ngSubmit)="adduser(addUserForm.value)">
+                <mat-error *ngIf="error">
+                    {{error}}
+                </mat-error>
+                <br/>
+                <mat-input-container class="input-container">
+                    <input matInput type="text" placeholder="UserName" formControlName="userName">
+                    <mat-error *ngIf="!addUserForm.hasError('required')">
+                        Please enter UserName
+                    </mat-error>
+                </mat-input-container>
+
+                <mat-input-container class="input-container">
+                    <input matInput type="password" placeholder="Password" formControlName="password">
+                    <mat-error *ngIf="!addUserForm.hasError('required')">
+                        Please enter Password
+                    </mat-error>
+                </mat-input-container>
+
+                <br/>
+
+                <button mat-raised-button type="submit" [disabled]="!addUserForm.valid">
+                    Login
+                </button>
+
+
+            </form> -->
+        </mat-card-content>
+    </mat-card>
+</ng-container>

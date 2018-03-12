@@ -1,0 +1,95 @@
+<div fxLayout="row">
+    <div fxFlex="10" fxFlex.gt-sm="10"></div>
+    <div fxFlex="90" fxFlex.gt-sm="80">
+        <ng-container>
+            <mat-card>
+                <mat-card-content>
+                    <!-- <h1>User Management</h1> -->
+                    <mat-tab-group class="demo-tab-group">
+                        <mat-tab label="Tab 1">
+                            <ng-template mat-tab-label>
+                                <mat-icon>person</mat-icon>
+                            </ng-template>
+                            <div class="demo-tab-content">
+                                <br/>
+                                <div class="example-header">
+                                    <mat-form-field>
+                                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                                    </mat-form-field>
+
+                                </div>
+                                <mat-table #table [dataSource]="dataSource" matSort>
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="id">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+                                        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                                    </ng-container>
+
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="firstName">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>First Name </mat-header-cell>
+                                        <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+                                    </ng-container>
+
+                                    <!-- Weight Column -->
+                                    <ng-container matColumnDef="username">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+                                        <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+                                    </ng-container>
+
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="userRole">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header> Role </mat-header-cell>
+                                        <mat-cell *matCellDef="let element"> {{element.userRole}} </mat-cell>
+                                    </ng-container>
+
+                                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                </mat-table>
+                                <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+                                </mat-paginator>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Tab 2">
+                            <ng-template mat-tab-label>
+                                <mat-icon>person_add</mat-icon>
+                            </ng-template>
+                            <div class="demo-tab-content">
+                                <add-user></add-user>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </mat-card-content>
+            </mat-card>
+        </ng-container>
+    </div>
+    <div fxFlex="10" fxFlex.gt-sm="10"></div>
+</div>
+<div fxLayout="row">
+    <div fxFlex="10" fxFlex.gt-sm="20"></div>
+    <div fxFlex="90" fxFlex.gt-sm="80">
+        <h1 class="section-title">{{'topHeroes' | translate}}</h1>
+        <mat-progress-spinner *ngIf="!heroes" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
+        </mat-progress-spinner>
+        <div id="heroes-list" *ngIf="heroes">
+            <ng-container *ngFor="let hero of heroes">
+                <mat-card class="hero-card">
+                    <mat-card-header>
+                        <div mat-card-avatar class="hero-header-image" [ngStyle]="{'background-image': 'url(assets/images/heroes/' + hero.id + '-thumbnail.jpg)'}"></div>
+                        <mat-card-title>{{hero.name}}</mat-card-title>
+                        <mat-card-subtitle>{{hero.alterEgo}}</mat-card-subtitle>
+                        <div class="flex-spacer"></div>
+                        <div class="hero-actions">
+                            {{hero.likes}}
+                            <mat-icon matTooltip="{{(canVote ? 'canVote' : 'cannotVote') | translate}}" [matTooltipPosition]="'above'" class="like-icon"
+                                (click)="like(hero)">favorite
+                            </mat-icon>
+                        </div>
+                    </mat-card-header>
+                    <img mat-card-image src="assets/images/heroes/{{hero.id}}.jpg">
+                </mat-card>
+            </ng-container>
+        </div>
+    </div>
+    <div fxFlex="10" fxFlex.gt-sm="20"></div>
+</div>

@@ -1,0 +1,22 @@
+.login-card {
+  width: 30%;
+  margin: auto;
+  margin-top: 2em;
+}
+
+form {
+  display: grid;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.mat-raised-button {
+  color: white;
+  background: #3f51b5;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.mat-form-field {
+  width: 100%;
+}
